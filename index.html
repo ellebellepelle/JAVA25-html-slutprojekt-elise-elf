@@ -1,0 +1,94 @@
+<!-- talar om för webbläsaren att detta är ett HTML5-dokument -->
+<!DOCTYPE html>
+
+<!-- detta är roten till hela dokumentet, all HTML-kod ska ligga inuti <html>, minsida är på svenska -->
+<html lang="sv">
+
+<!-- information om sidan, inställningar. tex, titel, länk till CSS, Meta-info, typsnitt -->
+<head>
+    <meta charset="UTF-8">
+    <!-- denhär sidan använder UTF-8-teckentolkning, gör att å,ä,ö funkar etc. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- detta är för mobilanpassning (gör sidan responsiv), "sidan skall anpassa sig efter skärmens bredd" -->
+    <title>minSuperSnyggaHemsida</title>
+    <!-- Sidans titel, visas i webbläsarens flik -->
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <!--
+    Först laddas reset.css som nollställer webbläsarens standard-styling
+    (t.ex. margin och padding som olika webbläsare lägger till automatiskt).
+
+    Därefter laddas style.css som innehåller min egen design och layout.
+    Ordningen är viktig eftersom CSS läses uppifrån och ner –
+    det som står sist kan skriva över det som står tidigare.
+    -->
+</head>
+
+<body>
+    <header>
+    <!-- Navigation / meny (byggd med lista). Flexbox används i CSS på nav ul för att lägga länkarna i rad -->
+        <nav>
+            <ul>
+                <li><a href="index.html">START</a></li>
+                <li><a href="./pagesNavbar/about.html">OM MIG</a></li>
+                <li><a href="./pagesNavbar/contact.html">KONTAKT</a></li>
+                <li><a href="./pagesNavbar/project.html">PROJEKT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Introtext centrerad i en wrapper -->
+        <div class="center-content">
+            <h1>Välkommen till min super snygga hemsida!</h1>
+
+            <p>Här kan du klicka dig runt och få inspiration av goda smoothies, smarriga maträtter och vardaglig träning.
+                <br>Du kan också läsa ett par rader om vem jag är och komma i kontakt med mig via kontakt-formuläret.
+            </p>
+
+            <h2>Mycket nöje!</h2>
+        </div>
+
+
+        <!-- projektsektion: innehåller tre klickbara "kort" (article) -->
+        <section class="projects">
+            <h2>Tre härliga sidor för dig att spana in:</h2>
+
+            <div class="project-gallery">
+                <article class="project-card">
+                    <a href="./pagesProject/smoothie.html">
+                        <img src="./images/s8.png" alt="här är en oladdad bild på smoothies">
+                        <h3>Goda Smoothies.</h3>
+                    </a>
+                </article>
+
+                <article class="project-card">
+                    <a href="./pagesProject/food.html">
+                        <img src="./images/m1.png" alt="här är en oladdad bild på mat">
+                        <h3>Smarrig mat.</h3>
+                    </a>
+                </article>
+
+                <article class="project-card">
+                    <a href="./pagesProject/workout.html">
+                        <img src="./images/t1.png" alt="här är en oladdad bild på träning">
+                        <h3>Träning.</h3>
+                    </a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 MinSuperSnyggaHemsida</p>
+            <p>Skapad av Elise Elf</p>
+            <!-- target=_blank öppnar i ny flik. rel skyddar mot att fliken kan påverka sidan -->
+            <a href="https://www.github.com/ellebellepelle" target="_blank" rel="noopener noreferrer">
+                Kolla in min GitHub
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

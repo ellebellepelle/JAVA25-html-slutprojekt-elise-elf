@@ -1,0 +1,396 @@
+/* jag har en css-fil för att jag vill ha samma stil i hela projektet */
+
+/* mina variabler */
+:root {
+    --pink: deeppink;
+    --purple: darkmagenta;
+    --black: black;
+    --yellow: yellow;
+
+    --footer-bg: #994488;
+    --footer-text: hotpink;
+    --footer-text2: #ffffff;
+
+    --radius: 15px;
+    --gap: 40px;
+}
+
+/* ****************************** */
+/* dessa gäller hela sidorna */
+/* lägger allt centrerat */
+main {
+    text-align: center;
+}
+
+/* Wrapper som begränsar bredden och centrerar innehåll */
+.center-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* alla a-länkar får samma inställningar */
+a {
+    font-family: "Comic Sans MS", "Helvetica", "Arial", sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--pink);
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+/* pseudo-klass (hover), korrigerar a-länkar när musen är över */
+a:hover {
+    text-decoration: underline;
+    color: var(--purple);
+}
+/* pseudo-klass (visited), korrigerar a-länkar när de varit klickade */
+a:visited {
+    color: var(--pink);
+}
+
+/* *********************************** */
+/* HEADER + NAVBAR */
+/* Nav ska ta hela bredden */
+nav {
+    width: 100%;
+}
+
+/* Listan i navbaren (själva länkraden) */
+/* Navbaren har flex på ul:en (gör att meny-länkarna läggs på rad ist för under varandra */
+nav ul {
+    display: flex;
+    list-style: none;           /* tar bort punkter */
+    justify-content: flex-end;  /* flyttar länkarna till höger */
+    gap: 24px;                  /* avstånd mellan menylänkar */
+    flex-wrap: wrap;            /* om skärmen är smal: bryt rad */
+
+    width: 90%;
+    margin: 0;
+    padding: 20px 16px;
+    box-sizing: border-box;
+}
+
+/* alla meny-item */
+/* alla <li>-element som ligger inuti en <ul> som ligger inuti en <nav> */
+nav ul li {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 6px 12px;
+    background-color: var(--footer-bg);
+}
+/* pseudo-klass (hover), korrigerar bakrundsfärgen när musen är över */
+nav ul li:hover {
+    background-color: var(--pink);
+}
+
+/* gör så att länken fyller hela meny-rutan (så hover/klick känns på hela rutan) */
+nav ul li a {
+    display: block;
+}
+
+/* ändrar textfärgen så fort musen är över hela rutan (li) */
+nav ul li:hover a {
+    color: var(--yellow);
+}
+
+
+/* ******************************** */
+/* layouten för projekt-delen */
+/* hela sektionen (ytterram + spacing) */
+.projects {
+    padding: 40px; /* luft runt innehållet */
+    text-align: center; /* text blir centrerat */
+}
+
+/* container runt alla kort */
+/* flexbox placerar korten bredvid varandra */
+.project-gallery {
+    display: flex; /* aktiverar flexbox */
+    justify-content: center; /* centrerar korten */
+    gap: var(--gap); /* avstånd mellan korten */
+    flex-wrap: wrap; /* ny rad om smal skärm */
+    margin-top: 20px; /* luft ovanför korten */
+}
+
+/* varje projektkort */
+.project-card {
+    flex: 0 1 28%; /* växer inte, får krympa, ca 28% bredd */
+}
+
+/* länken runt kortet (gör kortet klickbart) */
+/* alla övriga länkar i projektet blir understrukna när musen är över dem men inte dessa
+för att .project-card är mer specifik än bara a */
+.project-card a {
+    display: block; /* gör länken till block så den fyller kortet */
+    text-decoration: none; /* tar bort linjen under texten */
+}
+
+/* bild i projektkortet */
+/* alla bilder får samma propotioner */
+.project-card img {
+    width: 100%; /* fyller hela kortets bredd */
+    height: auto;
+
+    /* ger en jämn storlek på bilderna även om originalen skiljer sig */
+    aspect-ratio: 3 / 4;
+    /* beskär bilden ist för att förvränga den */
+    object-fit: cover;
+
+    border-radius: var(--radius); /* rundar hörnen */
+    transition: transform 0.25s ease; /* mjuk animation vid hover */
+}
+
+/* zooma bilden lite när musen är över kortet */
+.project-card:hover img {
+    transform: scale(1.03);
+}
+
+/* mjuk animation även på rubriken */
+.project-card h3 {
+    margin-top: 20px;
+    transition: transform 0.25s ease;
+}
+
+/* förstora rubriken när man hovrar över kortet */
+.project-card:hover h3 {
+    transform: scale(1.03);
+}
+
+/* rubriken under bilden */
+.project-card h3 {
+    margin-top: 20px;
+}
+
+
+/* ********************************* */
+/* mina olika list-sektioner */
+
+.lista_ett,
+.lista_tva,
+.lista_tre,
+.receptlist {
+    max-width: 300px;
+    margin: 40px auto;
+}
+
+.lista_ett ul,
+.lista_tva ul,
+.lista_tre ul,
+.receptlist ol {
+    text-align: left;
+    padding-left: 20px;
+    margin: 0;
+}
+
+/* ********************************* */
+/* article-sektion på Om mig */
+
+.about-article {
+    max-width: 700px;      /* begränsar bredden */
+    margin: 40px auto;     /* centrerar */
+    text-align: center;    /* centrerar text */
+}
+
+.about-article figcaption {
+    margin-top: 10px;
+    font-style: italic;
+    color: var(--purple);
+}
+
+
+
+/* ****************************** */
+/* mina bild-animationer */
+/* ram som e1Bild studsar i, har position: relative, så att child med absolute
+ positionerar sig i förhållande till containern (inte hela sidan) */
+.bounce-container {
+    width: 80%;
+    height: 200px;
+
+    margin: 0 auto;
+    overflow: hidden;
+
+    position: relative; /* viktig referens för absolute-barnet */
+}
+
+/* Bilden som studsar och snurrar */
+.e1Bild {
+    width: 120px;
+    height: auto;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    /* två animationer samtidigt:
+       - bounce flyttar bilden sidled
+       - spin snurrar bilden
+    */
+    animation:
+            bounce 5s ease-in-out infinite alternate,
+            spin 5s linear infinite;
+}
+
+/* studsa höger ↔ vänster */
+@keyframes bounce {
+    from { left: 0; }
+    to   { left: calc(100% - 120px); }
+}
+
+/* snurra runt sin egen axel */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* bilden som "glowar" */
+.e2Bild {
+    width: 400px;
+    height: auto;
+    animation: glow 1s alternate infinite;
+
+    display: block;       /* gör bilden till block-element */
+    margin: 0 auto;       /* centrerar den horisontellt */
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 5px red); }
+    to   { filter: drop-shadow(0 0 20px blue); }
+}
+
+/* bilder med fast höjd */
+.traningsbild,
+.smoothiebild,
+.matbild {
+    display: block;      /* gör dem till block */
+    width: auto;
+    height: 550px;
+    margin: 40px auto;   /* centrerar + lite luft ovan/under */
+}
+
+
+/* regnbågstext */
+.regnbage {
+    animation: rainbow 3s linear infinite;
+}
+
+@keyframes rainbow {
+    0%   { color: red; }
+    16%  { color: orange; }
+    33%  { color: yellow; }
+    50%  { color: green; }
+    66%  { color: blue; }
+    83%  { color: indigo; }
+    100% { color: violet; }
+}
+
+
+
+/* ********************************** */
+/* BILDGALLERI (HERO + THUMBS) */
+/* HERO-bild */
+.hero {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+
+    margin: 20px auto;
+    display: block; /* gör att margin auto fungerar snyggt */
+    border-radius: var(--radius);
+}
+
+/* container för småbilder */
+.thumbs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+/* med JS blir de små bilderna stööre när användaren klickar på dem och mindre när man klickar igen. */
+.thumb {
+    width: 220px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.thumb.stor {
+    transform: scale(2);
+    z-index: 10;
+}
+
+
+
+
+/* ********************************* */
+/* footer */
+footer {
+    background: var(--footer-bg);
+    color: var(--pink);
+
+    padding: 30px 0;
+    margin-top: 50px;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+/* Specifik länkstil i footern (överskriver den globala a-stilen) */
+footer a {
+    color: var(--footer-text2);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: var(--pink);
+}
+
+
+
+
+
+
+/* ******************************* */
+/* RESPONSIVE (MOBIL) */
+@media (max-width: 600px) {
+
+    /* Navbar: mindre mellanrum + centrerad */
+    nav ul {
+        gap: 16px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Projektsektion: mindre luft på mobil */
+    .projects {
+        padding: 16px;
+    }
+
+    .project-gallery {
+        gap: 16px;
+    }
+
+    /* HERO på mobil */
+    .hero {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Småbilder blir full bredd på mobil */
+    .thumb {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Göm stora extra bilder på mobil */
+    .matbild,
+    .smoothiebild,
+    .traningsbild {
+        display: none;
+    }
+}
